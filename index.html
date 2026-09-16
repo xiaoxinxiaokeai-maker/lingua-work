@@ -1,140 +1,273 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Lingua Work · 日英学习 App</title>
-<meta name="theme-color" content="#172554">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111d35"><title>Lingua Desk · 中英日学习台</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23111d35'/%3E%3Cpath d='M17 15h29v34H23a6 6 0 0 1-6-6V15Z' fill='%23f4c95d'/%3E%3Cpath d='M24 25h15M24 33h15M24 41h10' stroke='%23111d35' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
-:root{--bg:#eef4ff;--card:#fff;--text:#17223b;--muted:#718099;--line:#dde8f8;--blue:#315ff4;--indigo:#172554;--cyan:#13b7d4;--green:#14976f;--shadow:0 16px 45px rgba(27,54,100,.10)}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(180deg,#edf4ff,#f9fbff 42%,#f0f6ff);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
-.wrap{max-width:1100px;margin:auto;padding:14px 14px 96px}
-.hero{background:linear-gradient(135deg,#111e46,#214d9d 58%,#187b9a);color:#fff;border-radius:28px;padding:22px;box-shadow:0 24px 55px rgba(18,38,82,.24);position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-70px;top:-80px;background:radial-gradient(circle,rgba(79,221,255,.45),transparent 68%)}
-.hero h1{margin:4px 0 8px;font-size:38px;position:relative;z-index:1}.hero p{margin:0;max-width:720px;color:#dae8fb;line-height:1.7;position:relative;z-index:1}
-.hero-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;position:relative;z-index:1}.pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14);font-size:12px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;position:relative;z-index:1}
-.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:13px}.stat b{display:block;font-size:22px}.stat span{font-size:11px;color:#d6e5f8}
-.toolbar{position:sticky;top:0;z-index:20;margin-top:12px;padding:8px 0;background:linear-gradient(180deg,rgba(238,244,255,.95),rgba(238,244,255,.75),transparent);backdrop-filter:blur(12px)}
-.tools{display:grid;grid-template-columns:1fr auto;gap:8px} input.search{width:100%;border:1px solid var(--line);border-radius:16px;padding:12px 14px;font:inherit;background:#fff;box-shadow:var(--shadow)} select{border:1px solid var(--line);border-radius:16px;padding:0 12px;background:#fff;font:inherit}
-.tabs{display:flex;gap:8px;overflow:auto;padding:8px 0 2px}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;border:0;padding:9px 12px;border-radius:999px;background:#fff;color:#5f6e86;font-weight:700;box-shadow:0 6px 18px rgba(35,65,110,.07);cursor:pointer}.tab.active{background:var(--indigo);color:#fff}
-.section-head{display:flex;justify-content:space-between;align-items:end;margin:18px 3px 10px}.section-head h2{margin:0;font-size:22px}.section-head span{font-size:12px;color:var(--muted)}
-.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-.card-top{display:grid;grid-template-columns:86px 1fr;gap:14px;padding:15px}.visual{height:86px;border-radius:18px;background:linear-gradient(135deg,#eff5ff,#e1f6fb);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;color:#244b99;border:1px solid #ddeafa}
-.cat{font-size:11px;color:#6b7b95}.zh{font-size:20px;font-weight:900;margin:3px 0 6px}.en{font-size:15px;font-weight:800;color:#2854b6}.ja{font-size:15px;font-weight:800;color:#0b7d6a;margin-top:6px}.kana{font-size:11px;color:#8894a7;margin-top:2px}
-.examples{padding:0 15px 15px}.ex{padding:10px 12px;border-radius:15px;background:#f7faff;border:1px solid #e6eef9;margin-top:8px;font-size:12px;line-height:1.55}.ex b{color:#415778}
-.actions{display:flex;gap:8px;padding:0 15px 15px;flex-wrap:wrap}.btn{border:0;padding:9px 11px;border-radius:12px;background:#edf3ff;color:#244da3;font-weight:800;cursor:pointer}.btn.dark{background:#172554;color:#fff}.btn.star{background:#fff8e5;color:#a66d00}
-.study{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.panel{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:16px}
-.big{font-size:28px;font-weight:900;margin:6px 0}.muted{color:var(--muted);font-size:13px;line-height:1.6}
-.quiz{text-align:center}.quiz-word{font-size:28px;font-weight:900;margin:16px 0}.choices{display:grid;gap:8px}.choice{padding:11px;border-radius:14px;border:1px solid var(--line);background:#f8fbff;cursor:pointer;font-weight:700}.choice.ok{background:#eaf9f3;border-color:#bfe9d8;color:#0e765d}.choice.bad{background:#fff1f1;border-color:#ffd1d1;color:#af4545}
-.bottom{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;width:min(650px,calc(100% - 20px));display:grid;grid-template-columns:repeat(4,1fr);gap:7px;background:rgba(16,29,60,.94);padding:8px;border-radius:18px;backdrop-filter:blur(12px);z-index:30}.bottom a{text-align:center;color:#fff;font-size:11px;padding:9px 4px;text-decoration:none}
-.empty{padding:30px;text-align:center;color:var(--muted)}
-@media(max-width:760px){.stats,.card-grid,.study{grid-template-columns:1fr}.tools{grid-template-columns:1fr}.hero h1{font-size:31px}.card-top{grid-template-columns:72px 1fr}.visual{height:72px}}
+:root{--ink:#14213b;--navy:#111d35;--paper:#f3f1ea;--white:#fff;--muted:#6e788a;--line:#dce1e8;--yellow:#f4c95d;--teal:#147d76;--red:#bd514d;--blue:#3568d4;--shadow:0 14px 38px rgba(24,38,64,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:16px}button,input,select{font:inherit}.app{min-height:100vh;display:grid;grid-template-columns:255px minmax(0,1fr)}
+.side{position:sticky;top:0;height:100vh;background:var(--navy);color:#fff;padding:27px 20px;overflow:auto}.brand{display:flex;gap:12px;align-items:center;margin-bottom:27px}.brandmark{width:43px;height:43px;border-radius:13px;background:var(--yellow);display:grid;place-items:center;color:var(--navy);font-size:22px;font-weight:900;box-shadow:inset 0 -5px 0 rgba(0,0,0,.08)}.brand b{display:block;font-size:20px}.brand small{color:#aebbd3;letter-spacing:.08em}.side-label{color:#7888a7;font-size:12px;font-weight:800;letter-spacing:.12em;margin:19px 10px 8px}.cat{width:100%;display:flex;align-items:center;gap:10px;border:0;background:transparent;color:#cbd5e6;padding:11px 12px;border-radius:12px;text-align:left;cursor:pointer;margin:2px 0}.cat .ico{font-size:18px;width:24px}.cat em{margin-left:auto;font-style:normal;font-size:12px;color:#8090ad}.cat:hover,.cat.active{background:#22365c;color:#fff}.cat.active{box-shadow:inset 3px 0 0 var(--yellow)}.side-tip{margin-top:24px;padding:15px;border:1px solid #304566;border-radius:16px;color:#aebbd3;font-size:13px;line-height:1.65}.side-tip b{color:var(--yellow)}
+.main{padding:28px 34px 100px;max-width:1450px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;gap:22px;align-items:flex-start;margin-bottom:21px}.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--teal);font-weight:900}.top h1{font-family:Georgia,"Songti SC",serif;font-size:35px;line-height:1.15;margin:6px 0 8px}.top p{margin:0;color:var(--muted);line-height:1.65}.today{flex:0 0 auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);min-width:190px}.today strong{display:block;font-size:24px}.today span{font-size:13px;color:var(--muted)}
+.workspace{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.controls{padding:15px;display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:10px;border-bottom:1px solid var(--line);background:#fbfcfd}.searchwrap{position:relative}.searchwrap:before{content:"⌕";position:absolute;left:14px;top:8px;font-size:23px;color:#7a879a}.search{width:100%;height:46px;border:1px solid var(--line);border-radius:13px;padding:0 14px 0 43px;outline:none}.search:focus{border-color:#7e9ee4;box-shadow:0 0 0 3px #e9effc}.seg{display:flex;background:#edf0f4;padding:4px;border-radius:13px}.seg button{border:0;background:transparent;padding:8px 15px;border-radius:10px;font-weight:800;color:#6f7888;cursor:pointer}.seg button.active{background:#fff;color:var(--navy);box-shadow:0 2px 8px #0001}.filter{border:1px solid var(--line);border-radius:13px;background:#fff;padding:0 12px;color:var(--ink)}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}.metric{padding:15px 18px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric b{font-size:20px}.metric span{display:block;font-size:12px;color:var(--muted);margin-top:3px}.progress{height:5px;border-radius:5px;background:#e5e9ef;margin-top:8px;overflow:hidden}.progress i{display:block;height:100%;background:var(--teal);width:0}
+.listhead{display:flex;align-items:end;justify-content:space-between;padding:20px 20px 8px}.listhead h2{margin:0;font-size:22px}.listhead span{font-size:13px;color:var(--muted)}.cards{padding:10px 20px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden;transition:.18s}.card:hover{border-color:#b7c5d9;transform:translateY(-1px);box-shadow:0 12px 28px rgba(27,42,69,.08)}.card.mastered{border-color:#a9d4ca}.bar{height:5px;background:var(--tone)}.cardmain{padding:16px 17px}.meta{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:10px}.badge{padding:4px 8px;border-radius:7px;background:#eef2f7;color:#42516a;font-weight:800}.badge.sentence{background:#fff1d0;color:#80600d}.master{margin-left:auto;color:var(--teal);font-weight:800}.zh{font-weight:900;font-size:21px;margin-bottom:12px}.language{display:grid;grid-template-columns:38px 1fr;gap:8px;padding:10px 0;border-top:1px dashed #e1e4e9}.tag{font-size:11px;font-weight:900;color:#fff;background:var(--blue);height:23px;border-radius:6px;display:grid;place-items:center}.tag.jp{background:var(--red)}.phrase{font-weight:800;font-size:16px;line-height:1.45}.reading{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.55}.note{margin-top:10px;background:#f4f6f8;border-left:3px solid var(--yellow);padding:9px 11px;font-size:13px;color:#586477;line-height:1.55}.actions{display:flex;gap:7px;flex-wrap:wrap;padding:0 17px 15px}.action{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 10px;font-size:13px;font-weight:800;color:#47556b;cursor:pointer}.action:hover{background:#f3f6f9}.action.saved{color:#916200;background:#fff8dc;border-color:#efd788}.action.done{color:#087065;background:#eaf8f5;border-color:#acdcd3}.empty{grid-column:1/-1;text-align:center;padding:50px;color:var(--muted)}
+.study{margin-top:18px;background:var(--navy);color:#fff;border-radius:22px;padding:22px;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;box-shadow:0 18px 42px rgba(16,28,54,.19)}.study h2{margin:4px 0 12px}.study p{color:#aebbd3;line-height:1.65;margin:0}.flash{background:#fff;color:var(--ink);border-radius:17px;padding:18px;min-height:190px}.flash small{color:var(--muted)}.flash .big{font-size:25px;font-weight:900;margin:12px 0}.answer{padding-top:11px;border-top:1px dashed var(--line);line-height:1.65}.studyactions{display:flex;gap:8px;margin-top:14px}.studyactions button{border:0;border-radius:10px;padding:9px 12px;font-weight:800;cursor:pointer}.next{background:var(--yellow);color:var(--navy)}.reveal{background:#2b4066;color:#fff}.mobilecats{display:none}
+@media(max-width:980px){.app{grid-template-columns:1fr}.side{display:none}.main{padding:20px 16px 92px}.mobilecats{display:flex;gap:7px;overflow:auto;padding:0 0 12px}.mobilecats::-webkit-scrollbar{display:none}.mobilecats .cat{width:auto;white-space:nowrap;background:#fff;border:1px solid var(--line);color:var(--ink);padding:9px 12px}.mobilecats .cat em{display:none}.mobilecats .cat.active{background:var(--navy);color:#fff;box-shadow:none}.top{display:block}.today{margin-top:14px;display:inline-block}.controls{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.cards{grid-template-columns:1fr}.study{grid-template-columns:1fr}}
+@media(max-width:560px){.main{padding:16px 10px 80px}.top h1{font-size:29px}.top p{font-size:14px}.workspace,.study{border-radius:17px}.cards{padding:8px 10px 18px}.listhead{padding:17px 11px 7px}.metric{padding:12px}.controls{padding:10px}.seg button{flex:1;padding:8px 10px}.study{padding:15px}.phrase{font-size:15px}}
 </style>
 </head>
-<body>
-<div class="wrap">
-<header class="hero">
-  <div style="font-size:12px;letter-spacing:.12em;color:#b9daf0">PERSONAL LANGUAGE APP</div>
-  <h1>Lingua Work</h1>
-  <p>为你的日常、旅行和电商设计工作定制的英语 + 日语学习 App。中文解释、英文、日文、假名和场景例句放在一起，尽量做到一看就懂。</p>
-  <div class="hero-row"><span class="pill">🇨🇳 中文解释</span><span class="pill">🇺🇸 英语</span><span class="pill">🇯🇵 日语</span><span class="pill">🔊 发音</span><span class="pill">🧠 小测验</span><span class="pill">⭐ 收藏</span></div>
-  <div class="stats"><div class="stat"><b>45</b><span>词句卡</span></div><div class="stat"><b>8</b><span>学习场景</span></div><div class="stat"><b>工作优先</b><span>电商 / 设计 / PC</span></div><div class="stat"><b>离线可用</b><span>单文件网页</span></div></div>
-</header>
-
-<div class="toolbar">
-  <div class="tools">
-    <input id="search" class="search" placeholder="搜索：显卡 / layout / 予約 / 酒店…">
-    <select id="langMode"><option value="all">中英日一起看</option><option value="en">英语重点</option><option value="ja">日语重点</option></select>
-  </div>
-  <div class="tabs" id="tabs"></div>
-</div>
-
-<section id="cards">
-  <div class="section-head"><h2>场景卡片</h2><span id="countText"></span></div>
-  <div class="card-grid" id="grid"></div>
+<body><div class="app">
+<aside class="side"><div class="brand"><div class="brandmark">L</div><div><b>Lingua Desk</b><small>中英日学习台</small></div></div><div class="side-label">学习目录</div><div id="sideCats"></div><div class="side-tip"><b>工作优先</b><br>先掌握网页设计、电商、修图和电脑硬件表达，再逐步扩展生活词汇。</div></aside>
+<main class="main">
+<header class="top"><div><div class="eyebrow">PERSONAL LANGUAGE WORKSPACE</div><h1>把工作中真正会用到的话学会</h1><p>中文理解 · 英文音标 · 日文假名 · 罗马音 · 场景用法</p></div><div class="today"><strong id="dateText">—</strong><span>建议：新学 10 条，复习 5 条</span></div></header>
+<div class="mobilecats" id="mobileCats"></div>
+<section class="workspace">
+<div class="controls"><div class="searchwrap"><input class="search" id="search" placeholder="搜索中文、英文、日文或读音…"></div><div class="seg" id="typeSeg"><button class="active" data-type="all">全部</button><button data-type="word">单词</button><button data-type="sentence">句子</button></div><select class="filter" id="statusFilter"><option value="all">全部学习状态</option><option value="new">未掌握</option><option value="done">已掌握</option><option value="fav">已收藏</option></select></div>
+<div class="summary"><div class="metric"><b id="totalN">0</b><span>词句总量</span></div><div class="metric"><b id="wordN">0</b><span>实用单词</span></div><div class="metric"><b id="sentenceN">0</b><span>场景句子</span></div><div class="metric"><b id="doneN">0</b><span>已掌握</span><div class="progress"><i id="progressBar"></i></div></div></div>
+<div class="listhead"><h2 id="sectionTitle">全部内容</h2><span id="resultText"></span></div><div class="cards" id="cards"></div>
 </section>
-
-<section id="study">
-  <div class="section-head"><h2>学习模式</h2><span>随机抽卡 + 小测验</span></div>
-  <div class="study">
-    <div class="panel">
-      <div class="muted">今日随机卡</div>
-      <div class="big" id="randomZh">—</div>
-      <div id="randomEn" style="font-weight:800;color:#2854b6"></div>
-      <div id="randomJa" style="font-weight:800;color:#0b7d6a;margin-top:6px"></div>
-      <div id="randomKana" class="muted" style="margin-top:3px"></div>
-      <div style="margin-top:12px"><button class="btn dark" onclick="randomCard()">换一张</button></div>
-    </div>
-    <div class="panel quiz">
-      <div class="muted">三选一</div>
-      <div class="quiz-word" id="quizWord">—</div>
-      <div class="choices" id="choices"></div>
-      <div class="muted" id="quizHint" style="margin-top:10px">选择正确的中文意思</div>
-    </div>
-  </div>
-</section>
-
-<section id="fav">
-  <div class="section-head"><h2>我的收藏</h2><span>保存到本机浏览器</span></div>
-  <div class="card-grid" id="favGrid"></div>
-</section>
-
-<div style="text-align:center;color:#8591a3;font-size:11px;padding:26px 0 8px">Lingua Work · 为工作与日常定制的日英学习 App</div>
-</div>
-
-<nav class="bottom"><a href="#cards">卡片</a><a href="#study">学习</a><a href="#fav">收藏</a><a href="#" id="goTop">顶部</a></nav>
-
+<section class="study"><div><div class="eyebrow" style="color:#f4c95d">快速复习</div><h2>随机抽一张，不看答案先回忆</h2><p>先读中文，在脑中说出英文和日文，再显示答案。发音按钮会调用设备自带语音。</p><div class="studyactions"><button class="next" id="nextCard">换一张</button><button class="reveal" id="reveal">显示答案</button></div></div><div class="flash"><small id="flashCat">—</small><div class="big" id="flashZh">—</div><div class="answer" id="flashAnswer" hidden></div></div></section>
+</main></div>
 <script>
-const DATA = [{"cat": "电商工作", "icon": "🛒", "zh": "产品主图", "en": "main product image", "ja": "商品メイン画像", "kana": "しょうひん メイン がぞう", "example_en": "Please update the main product image.", "example_ja": "商品メイン画像を更新してください。", "visual": "🖼️"}, {"cat": "电商工作", "icon": "🛒", "zh": "详情页", "en": "product detail page", "ja": "商品詳細ページ", "kana": "しょうひん しょうさい ページ", "example_en": "The product detail page needs a cleaner layout.", "example_ja": "商品詳細ページのレイアウトをもっとシンプルにしたいです。", "visual": "📄"}, {"cat": "电商工作", "icon": "🛒", "zh": "五点描述", "en": "bullet points", "ja": "箇条書き", "kana": "かじょうがき", "example_en": "Let's shorten the bullet points.", "example_ja": "箇条書きを短くしましょう。", "visual": "•"}, {"cat": "电商工作", "icon": "🛒", "zh": "关键词", "en": "keywords", "ja": "キーワード", "kana": "きーわーど", "example_en": "These keywords have high search volume.", "example_ja": "このキーワードは検索数が多いです。", "visual": "🔎"}, {"cat": "电商工作", "icon": "🛒", "zh": "转化率", "en": "conversion rate", "ja": "コンバージョン率", "kana": "こんばーじょん りつ", "example_en": "We need to improve the conversion rate.", "example_ja": "コンバージョン率を改善する必要があります。", "visual": "📈"}, {"cat": "电商工作", "icon": "🛒", "zh": "库存", "en": "inventory / stock", "ja": "在庫", "kana": "ざいこ", "example_en": "This model is low in stock.", "example_ja": "このモデルは在庫が少ないです。", "visual": "📦"}, {"cat": "电商工作", "icon": "🛒", "zh": "变体", "en": "variant", "ja": "バリエーション", "kana": "ばりえーしょん", "example_en": "Please add the white variant.", "example_ja": "白いバリエーションを追加してください。", "visual": "◻️◼️"}, {"cat": "设计沟通", "icon": "🎨", "zh": "排版", "en": "layout", "ja": "レイアウト", "kana": "れいあうと", "example_en": "The layout feels too crowded.", "example_ja": "レイアウトが少し詰まりすぎています。", "visual": "▦"}, {"cat": "设计沟通", "icon": "🎨", "zh": "留白", "en": "white space", "ja": "余白", "kana": "よはく", "example_en": "Add more white space around the product.", "example_ja": "商品の周りにもっと余白を入れてください。", "visual": "⬜"}, {"cat": "设计沟通", "icon": "🎨", "zh": "对齐", "en": "alignment", "ja": "整列", "kana": "せいれつ", "example_en": "The icons need better alignment.", "example_ja": "アイコンの位置をきれいに整列してください。", "visual": "↔️"}, {"cat": "设计沟通", "icon": "🎨", "zh": "高分辨率", "en": "high resolution", "ja": "高解像度", "kana": "こうかいぞうど", "example_en": "Please export a high-resolution image.", "example_ja": "高解像度で書き出してください。", "visual": "4K"}, {"cat": "设计沟通", "icon": "🎨", "zh": "纯白背景", "en": "pure white background", "ja": "真っ白な背景", "kana": "まっしろ な はいけい", "example_en": "Use a pure white background.", "example_ja": "真っ白な背景にしてください。", "visual": "⬜"}, {"cat": "设计沟通", "icon": "🎨", "zh": "更自然一点", "en": "make it look more natural", "ja": "もっと自然にしてください", "kana": "もっと しぜん に して ください", "example_en": "Please make the lighting look more natural.", "example_ja": "光をもっと自然にしてください。", "visual": "✨"}, {"cat": "设计沟通", "icon": "🎨", "zh": "不要改变尺寸", "en": "do not change the dimensions", "ja": "サイズを変えないでください", "kana": "さいず を かえないで ください", "example_en": "Do not change the image dimensions.", "example_ja": "画像のサイズを変えないでください。", "visual": "📐"}, {"cat": "电脑硬件", "icon": "🖥️", "zh": "处理器", "en": "processor / CPU", "ja": "プロセッサー / CPU", "kana": "ぷろせっさー", "example_en": "This CPU is suitable for gaming and productivity.", "example_ja": "このCPUはゲームと作業の両方に向いています。", "visual": "🧠"}, {"cat": "电脑硬件", "icon": "🖥️", "zh": "显卡", "en": "graphics card / GPU", "ja": "グラフィックボード / GPU", "kana": "ぐらふぃっく ぼーど", "example_en": "This GPU supports high-resolution gaming.", "example_ja": "このGPUは高解像度のゲームに対応しています。", "visual": "🎮"}, {"cat": "电脑硬件", "icon": "🖥️", "zh": "内存", "en": "memory / RAM", "ja": "メモリ", "kana": "めもり", "example_en": "It comes with 32GB of DDR5 memory.", "example_ja": "32GBのDDR5メモリを搭載しています。", "visual": "▥"}, {"cat": "电脑硬件", "icon": "🖥️", "zh": "固态硬盘", "en": "solid-state drive / SSD", "ja": "SSD", "kana": "えすえすでぃー", "example_en": "The 1TB SSD offers fast loading times.", "example_ja": "1TB SSDで読み込みが速いです。", "visual": "💾"}, {"cat": "电脑硬件", "icon": "🖥️", "zh": "散热", "en": "cooling", "ja": "冷却", "kana": "れいきゃく", "example_en": "The cooling system keeps temperatures stable.", "example_ja": "冷却システムで温度を安定させます。", "visual": "❄️"}, {"cat": "电脑硬件", "icon": "🖥️", "zh": "电源", "en": "power supply / PSU", "ja": "電源ユニット", "kana": "でんげん ゆにっと", "example_en": "It uses an 850W power supply.", "example_ja": "850Wの電源ユニットを使用しています。", "visual": "⚡"}, {"cat": "电脑硬件", "icon": "🖥️", "zh": "开箱即用", "en": "ready to use out of the box", "ja": "すぐに使えます", "kana": "すぐ に つかえます", "example_en": "The PC is ready to use out of the box.", "example_ja": "このPCは開封後すぐに使えます。", "visual": "📦"}, {"cat": "职场沟通", "icon": "💼", "zh": "我稍后发给你", "en": "I'll send it to you later.", "ja": "あとで送ります。", "kana": "あとで おくります", "example_en": "I'll send the revised version to you later.", "example_ja": "修正版はあとで送ります。", "visual": "📨"}, {"cat": "职场沟通", "icon": "💼", "zh": "我先确认一下", "en": "Let me check first.", "ja": "まず確認します。", "kana": "まず かくにん します", "example_en": "Let me check the specifications first.", "example_ja": "まず仕様を確認します。", "visual": "✅"}, {"cat": "职场沟通", "icon": "💼", "zh": "需要修改", "en": "It needs some revisions.", "ja": "修正が必要です。", "kana": "しゅうせい が ひつよう です", "example_en": "The image needs some revisions.", "example_ja": "画像の修正が必要です。", "visual": "✏️"}, {"cat": "职场沟通", "icon": "💼", "zh": "这个版本更好", "en": "This version works better.", "ja": "このバージョンのほうがいいです。", "kana": "この ばーじょん の ほう が いい です", "example_en": "This version works better for the US market.", "example_ja": "アメリカ市場にはこのバージョンのほうがいいです。", "visual": "👍"}, {"cat": "职场沟通", "icon": "💼", "zh": "截止时间", "en": "deadline", "ja": "締め切り", "kana": "しめきり", "example_en": "What's the deadline for this project?", "example_ja": "このプロジェクトの締め切りはいつですか？", "visual": "⏰"}, {"cat": "职场沟通", "icon": "💼", "zh": "优先级", "en": "priority", "ja": "優先順位", "kana": "ゆうせん じゅんい", "example_en": "This task has a higher priority.", "example_ja": "この作業の優先順位が高いです。", "visual": "🔝"}, {"cat": "日常生活", "icon": "☕", "zh": "请给我这个", "en": "I'll take this one.", "ja": "これをお願いします。", "kana": "これ を おねがいします", "example_en": "I'll take this one, please.", "example_ja": "これをお願いします。", "visual": "👉"}, {"cat": "日常生活", "icon": "☕", "zh": "可以刷卡吗？", "en": "Can I pay by card?", "ja": "カードで払えますか？", "kana": "かーど で はらえます か", "example_en": "Can I pay by card?", "example_ja": "カードで払えますか？", "visual": "💳"}, {"cat": "日常生活", "icon": "☕", "zh": "洗手间在哪里？", "en": "Where is the restroom?", "ja": "トイレはどこですか？", "kana": "といれ は どこ です か", "example_en": "Excuse me, where is the restroom?", "example_ja": "すみません、トイレはどこですか？", "visual": "🚻"}, {"cat": "日常生活", "icon": "☕", "zh": "请稍等一下", "en": "Please wait a moment.", "ja": "少々お待ちください。", "kana": "しょうしょう おまち ください", "example_en": "Please wait a moment.", "example_ja": "少々お待ちください。", "visual": "⏳"}, {"cat": "日常生活", "icon": "☕", "zh": "没关系", "en": "No problem / It's okay.", "ja": "大丈夫です。", "kana": "だいじょうぶ です", "example_en": "It's okay, no problem.", "example_ja": "大丈夫です。", "visual": "👌"}, {"cat": "日常生活", "icon": "☕", "zh": "我不太明白", "en": "I don't quite understand.", "ja": "よく分かりません。", "kana": "よく わかりません", "example_en": "Sorry, I don't quite understand.", "example_ja": "すみません、よく分かりません。", "visual": "❓"}, {"cat": "出行旅游", "icon": "✈️", "zh": "我要去这里", "en": "I want to go here.", "ja": "ここに行きたいです。", "kana": "ここ に いきたい です", "example_en": "I want to go here. Which train should I take?", "example_ja": "ここに行きたいです。どの電車に乗ればいいですか？", "visual": "📍"}, {"cat": "出行旅游", "icon": "✈️", "zh": "几号站台？", "en": "Which platform?", "ja": "何番ホームですか？", "kana": "なんばん ほーむ です か", "example_en": "Which platform does the train leave from?", "example_ja": "何番ホームですか？", "visual": "🚉"}, {"cat": "出行旅游", "icon": "✈️", "zh": "我已经预订了", "en": "I have a reservation.", "ja": "予約しています。", "kana": "よやく して います", "example_en": "I have a reservation under Qin Yanxin.", "example_ja": "QIN YANXINの名前で予約しています。", "visual": "🧾"}, {"cat": "出行旅游", "icon": "✈️", "zh": "请给我靠窗座位", "en": "Could I have a window seat?", "ja": "窓側の席をお願いします。", "kana": "まどがわ の せき を おねがいします", "example_en": "Could I have a window seat, please?", "example_ja": "窓側の席をお願いします。", "visual": "🪟"}, {"cat": "出行旅游", "icon": "✈️", "zh": "下一班几点？", "en": "What time is the next one?", "ja": "次は何時ですか？", "kana": "つぎ は なんじ です か", "example_en": "What time is the next train?", "example_ja": "次の電車は何時ですか？", "visual": "🕒"}, {"cat": "餐厅点餐", "icon": "🍜", "zh": "有什么推荐？", "en": "What do you recommend?", "ja": "おすすめは何ですか？", "kana": "おすすめ は なん です か", "example_en": "What do you recommend here?", "example_ja": "ここでおすすめは何ですか？", "visual": "⭐"}, {"cat": "餐厅点餐", "icon": "🍜", "zh": "不要辣", "en": "Not spicy, please.", "ja": "辛くしないでください。", "kana": "からく しないで ください", "example_en": "Not spicy, please.", "example_ja": "辛くしないでください。", "visual": "🌶️"}, {"cat": "餐厅点餐", "icon": "🍜", "zh": "一位", "en": "Table for one.", "ja": "一人です。", "kana": "ひとり です", "example_en": "Table for one, please.", "example_ja": "一人です。", "visual": "1️⃣"}, {"cat": "餐厅点餐", "icon": "🍜", "zh": "买单", "en": "Could I have the bill?", "ja": "お会計をお願いします。", "kana": "おかいけい を おねがいします", "example_en": "Could I have the bill, please?", "example_ja": "お会計をお願いします。", "visual": "🧮"}, {"cat": "购物", "icon": "🛍️", "zh": "可以试一下吗？", "en": "Can I try this on?", "ja": "試着してもいいですか？", "kana": "しちゃく しても いい です か", "example_en": "Can I try this on?", "example_ja": "試着してもいいですか？", "visual": "👗"}, {"cat": "购物", "icon": "🛍️", "zh": "有别的颜色吗？", "en": "Do you have this in another color?", "ja": "他の色はありますか？", "kana": "ほか の いろ は あります か", "example_en": "Do you have this in another color?", "example_ja": "他の色はありますか？", "visual": "🎨"}, {"cat": "购物", "icon": "🛍️", "zh": "这个多少钱？", "en": "How much is this?", "ja": "これはいくらですか？", "kana": "これ は いくら です か", "example_en": "How much is this?", "example_ja": "これはいくらですか？", "visual": "💴"}];
-const CATS = ["电商工作", "设计沟通", "电脑硬件", "职场沟通", "日常生活", "出行旅游", "餐厅点餐", "购物"];
-let activeCat='全部';
-let mode='all';
+const CATS=[
+['all','全部内容','⌘','#3568d4'],['web','网页与视觉设计','▦','#4068d8'],['ecom','电商运营','▣','#8858bf'],['retouch','图片修图','◐','#cf566d'],['pc','电脑硬件','▤','#1c8983'],['ai','AI工具与提示词','✦','#7453c7'],['photo','摄影与视频','◉','#b6537c'],['office','办公软件','▧','#3f72b8'],['work','职场沟通','✓','#b27a16'],['client','客户沟通','◎','#9a6a26'],['logistics','物流与仓储','▱','#347b6c'],['home','家居用品','⌂','#697b4d'],['digital','家电与数码','⌁','#49758e'],['clothes','服装穿搭','♢','#a55678'],['health','身体与健康','＋','#39917f'],['fruit','水果蔬菜','●','#d86a43'],['cook','餐饮烹饪','♨','#b94f43'],['shop','购物支付','◇','#3176a6'],['travel','出行交通','→','#50668b'],['hotel','酒店住宿','▥','#76634c'],['social','社交日常','☺','#b06b42'],['weather','天气与时间','☼','#54799a'],['pet','宠物照护','♧','#7a7350']
+].map(([id,name,icon,tone])=>({id,name,icon,tone}));
+const D=(cat,type,zh,en,enp,ja,kana,romaji,note)=>({cat,type,zh,en,enp,ja,kana,romaji,note});
+const DATA=[
+D('web','word','排版','layout','/ˈleɪaʊt/','レイアウト','れいあうと','reiauto','页面中图片、文字和按钮的整体安排。'),
+D('web','word','留白','white space','/ˌwaɪt ˈspeɪs/','余白','よはく','yohaku','设计中的空白区域，不一定是白色。'),
+D('web','word','对齐','alignment','/əˈlaɪnmənt/','整列','せいれつ','seiretsu','常搭配 left / center / right alignment。'),
+D('web','word','字体层级','type hierarchy','/ˈtaɪp ˌhaɪərɑːrki/','文字の階層','もじ の かいそう','moji no kaisō','用字号、字重和颜色区分信息重要程度。'),
+D('web','word','响应式设计','responsive design','/rɪˈspɑːnsɪv dɪˈzaɪn/','レスポンシブデザイン','れすぽんしぶ でざいん','resuponshibu dezain','页面会适应手机、平板和电脑尺寸。'),
+D('web','word','视觉焦点','visual focus','/ˈvɪʒuəl ˈfoʊkəs/','視覚的な焦点','しかくてき な しょうてん','shikakuteki na shōten','画面中最先吸引注意力的位置。'),
+D('web','sentence','这个排版太拥挤了。','This layout feels too crowded.','/ðɪs ˈleɪaʊt fiːlz tuː ˈkraʊdɪd/','このレイアウトは少し詰まりすぎています。','この れいあうと は すこし つまりすぎて います','kono reiauto wa sukoshi tsumarisugite imasu','专业且委婉的设计反馈。'),
+D('web','sentence','请增加产品周围的留白。','Please add more white space around the product.','/pliːz æd mɔːr waɪt speɪs əˈraʊnd ðə ˈprɑːdʌkt/','商品の周りにもっと余白を入れてください。','しょうひん の まわり に もっと よはく を いれて ください','shōhin no mawari ni motto yohaku o irete kudasai','适用于主图、A+和详情页修改。'),
+D('web','sentence','移动端的文字需要再大一点。','The text needs to be larger on mobile.','/ðə tekst niːdz tə bi ˈlɑːrdʒər ɑːn ˈmoʊbəl/','モバイルでは文字をもう少し大きくしてください。','もばいる では もじ を もう すこし おおきく して ください','mobairu dewa moji o mō sukoshi ōkiku shite kudasai','on mobile = 在移动端。'),
+D('web','sentence','请保持所有图标的大小一致。','Please keep all icons the same size.','/pliːz kiːp ɔːl ˈaɪkɑːnz ðə seɪm saɪz/','すべてのアイコンを同じサイズにしてください。','すべて の あいこん を おなじ さいず に して ください','subete no aikon o onaji saizu ni shite kudasai','keep + 宾语 + 状态：让……保持……。'),
 
-function speak(text,lang){ const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=.86;speechSynthesis.cancel();speechSynthesis.speak(u); }
-function favs(){return JSON.parse(localStorage.getItem('lingua-favs')||'[]')}
-function setFavs(x){localStorage.setItem('lingua-favs',JSON.stringify(x));renderFavs();render();}
-function toggleFav(i){let f=favs();f.includes(i)?f=f.filter(x=>x!==i):f.push(i);setFavs(f)}
-function cardHTML(x,i){
- const f=favs().includes(i);
- const showEn=mode!=='ja', showJa=mode!=='en';
- return `<article class="card">
-  <div class="card-top"><div class="visual">${x.visual}</div><div><div class="cat">${x.icon} ${x.cat}</div><div class="zh">${x.zh}</div>${showEn?`<div class="en">EN · ${x.en}</div>`:''}${showJa?`<div class="ja">JP · ${x.ja}</div><div class="kana">${x.kana}</div>`:''}</div></div>
-  <div class="examples">${showEn?`<div class="ex"><b>English</b><br>${x.example_en}</div>`:''}${showJa?`<div class="ex"><b>日本語</b><br>${x.example_ja}</div>`:''}</div>
-  <div class="actions">${showEn?`<button class="btn" onclick='speak(${JSON.stringify(x.en)},"en-US")'>🔊 英语</button>`:''}${showJa?`<button class="btn" onclick='speak(${JSON.stringify(x.ja)},"ja-JP")'>🔊 日语</button>`:''}<button class="btn star" onclick="toggleFav(${i})">${f?'★ 已收藏':'☆ 收藏'}</button></div>
- </article>`;
-}
-function renderTabs(){
- document.getElementById('tabs').innerHTML=['全部',...CATS].map(c=>`<button class="tab ${c===activeCat?'active':''}" onclick="activeCat=${JSON.stringify(c)};renderTabs();render()">${c}</button>`).join('');
-}
-function filtered(){
- const q=document.getElementById('search').value.trim().toLowerCase();
- return DATA.map((x,i)=>[x,i]).filter(([x])=>(activeCat==='全部'||x.cat===activeCat)&&(!q||Object.values(x).join(' ').toLowerCase().includes(q)));
-}
-function render(){
- const arr=filtered();document.getElementById('countText').textContent=`${arr.length} 张`;
- document.getElementById('grid').innerHTML=arr.length?arr.map(([x,i])=>cardHTML(x,i)).join(''):`<div class="empty">没有找到对应内容</div>`;
-}
-function renderFavs(){
- const f=favs();document.getElementById('favGrid').innerHTML=f.length?f.map(i=>cardHTML(DATA[i],i)).join(''):`<div class="empty">还没有收藏，看到常用的词句可以先点 ☆ 收藏。</div>`;
-}
-function randomCard(){
- const x=DATA[Math.floor(Math.random()*DATA.length)];
- document.getElementById('randomZh').textContent=x.zh;document.getElementById('randomEn').textContent='EN · '+x.en;document.getElementById('randomJa').textContent='JP · '+x.ja;document.getElementById('randomKana').textContent=x.kana;
-}
-let quizAnswer=null;
-function quiz(){
- const i=Math.floor(Math.random()*DATA.length),x=DATA[i]; quizAnswer=i;
- document.getElementById('quizWord').textContent=Math.random()>.5?x.en:x.ja;
- let opts=[i];while(opts.length<3){let n=Math.floor(Math.random()*DATA.length);if(!opts.includes(n))opts.push(n)}opts.sort(()=>Math.random()-.5);
- document.getElementById('choices').innerHTML=opts.map(n=>`<button class="choice" onclick="answer(this,${n})">${DATA[n].zh}</button>`).join('');
- document.getElementById('quizHint').textContent='选择正确的中文意思';
-}
-function answer(btn,n){document.querySelectorAll('.choice').forEach(b=>b.disabled=true);if(n===quizAnswer){btn.classList.add('ok');document.getElementById('quizHint').textContent='答对了 ✓';}else{btn.classList.add('bad');document.getElementById('quizHint').textContent='正确答案：'+DATA[quizAnswer].zh;}setTimeout(quiz,1200)}
-document.getElementById('search').addEventListener('input',render);
-document.getElementById('langMode').addEventListener('change',e=>{mode=e.target.value;render();renderFavs()});
-document.getElementById('goTop').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})});
-renderTabs();render();renderFavs();randomCard();quiz();
-</script>
-</body></html>
+D('ecom','word','产品主图','main product image','/meɪn ˈprɑːdʌkt ˈɪmɪdʒ/','商品メイン画像','しょうひん めいん がぞう','shōhin mein gazō','Amazon 语境也常简称 main image。'),
+D('ecom','word','详情页','product detail page','/ˈprɑːdʌkt ˈdiːteɪl peɪdʒ/','商品詳細ページ','しょうひん しょうさい ぺーじ','shōhin shōsai pēji','英文常缩写为 PDP。'),
+D('ecom','word','五点描述','bullet points','/ˈbʊlɪt pɔɪnts/','箇条書き','かじょうがき','kajōgaki','商品标题下方的卖点列表。'),
+D('ecom','word','变体','variation / variant','/ˌveriˈeɪʃən/ · /ˈveriənt/','バリエーション','ばりえーしょん','bariēshon','variation 指父子体关系，variant 指具体款式。'),
+D('ecom','word','转化率','conversion rate','/kənˈvɜːrʒən reɪt/','コンバージョン率','こんばーじょん りつ','konbājon ritsu','访客最终下单的比例。'),
+D('ecom','word','库存','inventory / stock','/ˈɪnvəntɔːri/ · /stɑːk/','在庫','ざいこ','zaiko','out of stock = 缺货。'),
+D('ecom','sentence','请把白色款添加到同一个变体中。','Please add the white model to the same variation.','/pliːz æd ðə waɪt ˈmɑːdl tə ðə seɪm ˌveriˈeɪʃən/','白いモデルを同じバリエーションに追加してください。','しろい もでる を おなじ ばりえーしょん に ついか して ください','shiroi moderu o onaji bariēshon ni tsuika shite kudasai','model 在这里表示产品款式。'),
+D('ecom','sentence','这张图片不符合主图要求。','This image does not meet the main image requirements.','/ðɪs ˈɪmɪdʒ dʌz nɑːt miːt ðə meɪn ˈɪmɪdʒ rɪˈkwaɪərmənts/','この画像はメイン画像の要件を満たしていません。','この がぞう は めいん がぞう の ようけん を みたして いません','kono gazō wa mein gazō no yōken o mitashite imasen','meet requirements = 符合要求。'),
+D('ecom','sentence','我们需要提高这个页面的转化率。','We need to improve the conversion rate of this page.','/wi niːd tə ɪmˈpruːv ðə kənˈvɜːrʒən reɪt əv ðɪs peɪdʒ/','このページのコンバージョン率を改善する必要があります。','この ぺーじ の こんばーじょんりつ を かいぜん する ひつよう が あります','kono pēji no konbājon-ritsu o kaizen suru hitsuyō ga arimasu','improve / 改善 适合描述页面优化。'),
+D('ecom','sentence','请检查标题中是否包含核心关键词。','Please check whether the title includes the main keywords.','/pliːz tʃek ˈweðər ðə ˈtaɪtl ɪnˈkluːdz ðə meɪn ˈkiːwɜːrdz/','タイトルに主要キーワードが含まれているか確認してください。','たいとる に しゅよう きーわーど が ふくまれて いる か かくにん して ください','taitoru ni shuyō kīwādo ga fukumarete iru ka kakunin shite kudasai','whether = 是否。'),
+
+D('retouch','word','抠图','background removal','/ˈbækɡraʊnd rɪˈmuːvəl/','背景切り抜き','はいけい きりぬき','haikei kirinuki','动作表达：remove the background。'),
+D('retouch','word','阴影','shadow','/ˈʃædoʊ/','影','かげ','kage','产品图常说 natural shadow / drop shadow。'),
+D('retouch','word','高分辨率','high resolution','/haɪ ˌrezəˈluːʃən/','高解像度','こうかいぞうど','kōkaizōdo','作形容词写 high-resolution。'),
+D('retouch','word','色差','color difference','/ˈkʌlər ˈdɪfrəns/','色差','しきさ','shikisa','color mismatch 强调颜色对不上。'),
+D('retouch','word','噪点','image noise','/ˈɪmɪdʒ nɔɪz/','画像ノイズ','がぞう のいず','gazō noizu','去噪：noise reduction / ノイズ除去。'),
+D('retouch','word','锐化','sharpening','/ˈʃɑːrpənɪŋ/','シャープ処理','しゃーぷ しょり','shāpu shori','过度锐化是 over-sharpening。'),
+D('retouch','sentence','请保留机箱的原始细节。','Please preserve the original details of the PC case.','/pliːz prɪˈzɜːrv ði əˈrɪdʒənl ˈdiːteɪlz əv ðə piː siː keɪs/','PCケースの元のディテールを残してください。','ぴーしー けーす の もと の でぃてーる を のこして ください','pīshī kēsu no moto no ditēru o nokoshite kudasai','preserve 强调不要破坏原细节。'),
+D('retouch','sentence','只调整灯光，不要改变产品结构。','Adjust only the lighting; do not change the product structure.','/əˈdʒʌst ˈoʊnli ðə ˈlaɪtɪŋ duː nɑːt tʃeɪndʒ ðə ˈprɑːdʌkt ˈstrʌktʃər/','照明だけを調整し、製品の構造は変えないでください。','しょうめい だけ を ちょうせい し せいひん の こうぞう は かえないで ください','shōmei dake o chōsei shi, seihin no kōzō wa kaenaide kudasai','only 限制修改范围。'),
+D('retouch','sentence','请导出一张纯白背景的高清图片。','Please export a high-resolution image on a pure white background.','/pliːz ɪkˈspɔːrt ə haɪ rezəˈluːʃən ˈɪmɪdʒ ɑːn ə pjʊr waɪt ˈbækɡraʊnd/','真っ白な背景で高解像度の画像を書き出してください。','まっしろ な はいけい で こうかいぞうど の がぞう を かきだして ください','masshiro na haikei de kōkaizōdo no gazō o kakidashite kudasai','export / 書き出す 都是软件导出的常用说法。'),
+D('retouch','sentence','图片看起来太模糊，需要更清晰。','The image looks too blurry and needs to be sharper.','/ði ˈɪmɪdʒ lʊks tuː ˈblɜːri ænd niːdz tə bi ˈʃɑːrpər/','画像がぼやけているので、もっと鮮明にしてください。','がぞう が ぼやけて いる ので もっと せんめい に して ください','gazō ga boyakete iru node, motto senmei ni shite kudasai','blurry = 模糊；sharp = 清晰锐利。'),
+
+D('pc','word','处理器','processor / CPU','/ˈprɑːsesər/','プロセッサー / CPU','ぷろせっさー','purosessā','CPU 全称 central processing unit。'),
+D('pc','word','显卡','graphics card / GPU','/ˈɡræfɪks kɑːrd/','グラフィックボード / GPU','ぐらふぃっく ぼーど','gurafikku bōdo','日本口语常缩写为 グラボ。'),
+D('pc','word','内存','memory / RAM','/ˈmeməri/','メモリ','めもり','memori','不要与 storage（存储容量）混淆。'),
+D('pc','word','固态硬盘','solid-state drive / SSD','/ˌsɑːlɪd steɪt ˈdraɪv/','SSD','えすえすでぃー','esu esu dī','M.2 与 NVMe 是规格/协议。'),
+D('pc','word','电源','power supply / PSU','/ˈpaʊər səˈplaɪ/','電源ユニット','でんげん ゆにっと','dengen yunitto','整机参数中 PSU 最简洁。'),
+D('pc','word','散热系统','cooling system','/ˈkuːlɪŋ ˈsɪstəm/','冷却システム','れいきゃく しすてむ','reikyaku shisutemu','air cooling = 风冷；liquid cooling = 水冷。'),
+D('pc','sentence','这款电脑配备了32GB DDR5内存。','This PC comes with 32GB of DDR5 memory.','/ðɪs piː siː kʌmz wɪð ˌθɜːrti tuː ˈɡɪɡəbaɪts əv meməri/','このPCは32GBのDDR5メモリを搭載しています。','この ぴーしー は さんじゅうに ぎがばいと の めもり を とうさい して います','kono pīshī wa sanjūni gigabaito no memori o tōsai shite imasu','comes with / 搭載しています 适合参数说明。'),
+D('pc','sentence','散热系统可以保持稳定的温度。','The cooling system keeps temperatures stable.','/ðə ˈkuːlɪŋ ˈsɪstəm kiːps ˈtemprətʃərz ˈsteɪbəl/','冷却システムが温度を安定させます。','れいきゃく しすてむ が おんど を あんてい させます','reikyaku shisutemu ga ondo o antei sasemasu','keep + 宾语 + 形容词。'),
+D('pc','sentence','开箱后连接显示器即可使用。','Connect a monitor and it is ready to use out of the box.','/kəˈnekt ə ˈmɑːnɪtər ænd ɪt ɪz ˈredi tə juːz aʊt əv ðə bɑːks/','開封後、モニターに接続すればすぐに使えます。','かいふうご もにたー に せつぞく すれば すぐ に つかえます','kaifūgo, monitā ni setsuzoku sureba sugu ni tsukaemasu','out of the box = 开箱即用。'),
+D('pc','sentence','这张显卡适合高分辨率游戏。','This graphics card is suitable for high-resolution gaming.','/ðɪs ˈɡræfɪks kɑːrd ɪz ˈsuːtəbəl fər haɪ rezəˈluːʃən ˈɡeɪmɪŋ/','このグラフィックボードは高解像度のゲームに適しています。','この ぐらふぃっく ぼーど は こうかいぞうど の げーむ に てきして います','kono gurafikku bōdo wa kōkaizōdo no gēmu ni tekishite imasu','be suitable for = 适合。'),
+
+D('work','word','优先级','priority','/praɪˈɔːrəti/','優先順位','ゆうせん じゅんい','yūsen jun’i','high priority / 優先順位が高い。'),
+D('work','word','截止日期','deadline','/ˈdedlaɪn/','締め切り','しめきり','shimekiri','meet a deadline = 按期完成。'),
+D('work','word','修改稿','revised version','/rɪˈvaɪzd ˈvɜːrʒən/','修正版','しゅうせいばん','shūseiban','revision 表示修改过程或一次修改。'),
+D('work','word','反馈','feedback','/ˈfiːdbæk/','フィードバック','ふぃーどばっく','fīdobakku','英文 feedback 通常不可数。'),
+D('work','word','确认','confirmation','/ˌkɑːnfərˈmeɪʃən/','確認','かくにん','kakunin','动词 confirm / 確認する。'),
+D('work','sentence','我先确认一下具体要求。','Let me confirm the exact requirements first.','/let mi kənˈfɜːrm ði ɪɡˈzækt rɪˈkwaɪərmənts fɜːrst/','まず具体的な要件を確認します。','まず ぐたいてき な ようけん を かくにん します','mazu gutaiteki na yōken o kakunin shimasu','Let me… 是自然的“我先……”。'),
+D('work','sentence','我会在今天下班前发修改稿。','I will send the revised version by the end of the day.','/aɪ wɪl send ðə rɪˈvaɪzd ˈvɜːrʒən baɪ ði end əv ðə deɪ/','今日中に修正版を送ります。','きょうじゅう に しゅうせいばん を おくります','kyōjū ni shūseiban o okurimasu','by the end of the day = 今天结束前。'),
+D('work','sentence','这个任务的优先级更高。','This task has a higher priority.','/ðɪs tæsk hæz ə ˈhaɪər praɪˈɔːrəti/','この作業は優先順位が高いです。','この さぎょう は ゆうせん じゅんい が たかい です','kono sagyō wa yūsen jun’i ga takai desu','higher 表示与其他任务相比。'),
+
+D('home','word','沙发','sofa / couch','/ˈsoʊfə/ · /kaʊtʃ/','ソファ','そふぁ','sofa','美式口语 couch 很常见。'),
+D('home','word','衣柜','wardrobe / closet','/ˈwɔːrdroʊb/ · /ˈklɑːzət/','クローゼット','くろーぜっと','kurōzetto','美国家中嵌入式衣柜通常叫 closet。'),
+D('home','word','床头柜','nightstand','/ˈnaɪtstænd/','ナイトテーブル','ないと てーぶる','naito tēburu','美式英语最常用 nightstand。'),
+D('home','word','窗帘','curtains','/ˈkɜːrtənz/','カーテン','かーてん','kāten','英语通常用复数 curtains。'),
+D('home','word','插座','power outlet','/ˈpaʊər ˌaʊtlet/','コンセント','こんせんと','konsento','日语 コンセント 指墙上插座。'),
+D('home','sentence','这个尺寸适合我的卧室吗？','Will this size fit in my bedroom?','/wɪl ðɪs saɪz fɪt ɪn maɪ ˈbedruːm/','このサイズは私の寝室に置けますか？','この さいず は わたし の しんしつ に おけます か','kono saizu wa watashi no shinshitsu ni okemasu ka','fit in 强调空间是否放得下。'),
+D('home','sentence','附近有电源插座吗？','Is there a power outlet nearby?','/ɪz ðer ə ˈpaʊər ˌaʊtlet ˌnɪrˈbaɪ/','近くにコンセントはありますか？','ちかく に こんせんと は あります か','chikaku ni konsento wa arimasu ka','nearby = 在附近。'),
+
+D('fruit','word','苹果','apple','/ˈæpəl/','りんご','りんご','ringo','an apple；复数 apples。'),
+D('fruit','word','草莓','strawberry','/ˈstrɔːberi/','いちご','いちご','ichigo','日语通常写平假名。'),
+D('fruit','word','葡萄','grapes','/ɡreɪps/','ぶどう','ぶどう','budō','英语谈一串或一类时常用复数。'),
+D('fruit','word','桃子','peach','/piːtʃ/','桃','もも','momo','复数为 peaches。'),
+D('fruit','word','西兰花','broccoli','/ˈbrɑːkəli/','ブロッコリー','ぶろっこりー','burokkorī','英语 broccoli 通常不可数。'),
+D('fruit','sentence','这些草莓甜吗？','Are these strawberries sweet?','/ɑːr ðiːz ˈstrɔːberiz swiːt/','このいちごは甘いですか？','この いちご は あまい です か','kono ichigo wa amai desu ka','these 对应复数 strawberries。'),
+D('fruit','sentence','这个需要放冰箱吗？','Does this need to be refrigerated?','/dʌz ðɪs niːd tə bi rɪˈfrɪdʒəreɪtɪd/','これは冷蔵庫に入れる必要がありますか？','これ は れいぞうこ に いれる ひつよう が あります か','kore wa reizōko ni ireru hitsuyō ga arimasu ka','refrigerated = 冷藏保存。'),
+
+D('cook','word','煎','pan-fry','/ˈpæn fraɪ/','焼く','やく','yaku','pan-fry 指用少量油在平底锅煎。'),
+D('cook','word','蒸','steam','/stiːm/','蒸す','むす','musu','既可作动词，也可指蒸汽。'),
+D('cook','word','切片','slice','/slaɪs/','薄切り','うすぎり','usugiri','slice 可作名词和动词。'),
+D('cook','word','调味料','seasoning','/ˈsiːzənɪŋ/','調味料','ちょうみりょう','chōmiryō','season 作动词表示调味。'),
+D('cook','word','保质期','shelf life','/ˈʃelf laɪf/','賞味期限','しょうみ きげん','shōmi kigen','消費期限比賞味期限更严格。'),
+D('cook','sentence','请不要放辣椒。','Please do not add any chili.','/pliːz duː nɑːt æd ˈeni ˈtʃɪli/','唐辛子を入れないでください。','とうがらし を いれないで ください','tōgarashi o irenaide kudasai','add / 入れる = 加入食材。'),
+D('cook','sentence','牛排要五分熟。','I would like the steak medium.','/aɪ wʊd laɪk ðə steɪk ˈmiːdiəm/','ステーキはミディアムでお願いします。','すてーき は みでぃあむ で おねがいします','sutēki wa midiamu de onegai shimasu','medium 通常对应五分熟。'),
+
+D('shop','word','收据','receipt','/rɪˈsiːt/','レシート','れしーと','reshīto','注意 receipt 中的 p 不发音。'),
+D('shop','word','退款','refund','/ˈriːfʌnd/ 名词 · /rɪˈfʌnd/ 动词','返金','へんきん','henkin','英文名词和动词重音不同。'),
+D('shop','word','缺货','out of stock','/aʊt əv stɑːk/','在庫切れ','ざいこぎれ','zaikogire','in stock = 有货。'),
+D('shop','word','免税','tax-free','/ˌtæks ˈfriː/','免税','めんぜい','menzei','tax-free shopping = 免税购物。'),
+D('shop','word','保修','warranty','/ˈwɔːrənti/','保証','ほしょう','hoshō','warranty 偏产品保修。'),
+D('shop','sentence','可以刷卡吗？','Can I pay by card?','/kæn aɪ peɪ baɪ kɑːrd/','カードで払えますか？','かーど で はらえます か','kādo de haraemasu ka','pay by card 是最自然表达。'),
+D('shop','sentence','有其他颜色或尺寸吗？','Do you have this in another color or size?','/duː ju hæv ðɪs ɪn əˈnʌðər ˈkʌlər ɔːr saɪz/','他の色やサイズはありますか？','ほか の いろ や さいず は あります か','hoka no iro ya saizu wa arimasu ka','have this in… = 有这个商品的某款。'),
+
+D('travel','word','站台','platform','/ˈplætfɔːrm/','ホーム','ほーむ','hōmu','日语车站站台说 ホーム。'),
+D('travel','word','换乘','transfer','/ˈtrænsfɜːr/','乗り換え','のりかえ','norikae','transfer at… / …で乗り換える。'),
+D('travel','word','单程票','one-way ticket','/ˌwʌn weɪ ˈtɪkɪt/','片道切符','かたみち きっぷ','katamichi kippu','round-trip ticket = 往返票。'),
+D('travel','word','行李寄存处','luggage storage','/ˈlʌɡɪdʒ ˈstɔːrɪdʒ/','手荷物預かり所','てにもつ あずかりじょ','tenimotsu azukarijo','luggage 通常不可数。'),
+D('travel','word','预约','reservation','/ˌrezərˈveɪʃən/','予約','よやく','yoyaku','酒店餐厅用 reservation。'),
+D('travel','sentence','去博多需要在哪一站换乘？','Where do I transfer for Hakata?','/wer duː aɪ ˈtrænsfɜːr fər hɑːˈkɑːtə/','博多へ行くにはどこで乗り換えますか？','はかた へ いく には どこ で のりかえます か','Hakata e iku niwa doko de norikaemasu ka','for + 目的地：去往某地。'),
+D('travel','sentence','这班车从几号站台出发？','Which platform does this train leave from?','/wɪtʃ ˈplætfɔːrm dʌz ðɪs treɪn liːv frəm/','この電車は何番ホームから出ますか？','この でんしゃ は なんばん ほーむ から でます か','kono densha wa nanban hōmu kara demasu ka','leave from = 从……出发。'),
+
+D('ai','word','提示词','prompt','/prɑːmpt/','プロンプト','ぷろんぷと','puronputo','给AI的文字指令；动词也可表示“提示”。'),
+D('ai','word','负面提示词','negative prompt','/ˈneɡətɪv prɑːmpt/','ネガティブプロンプト','ねがてぃぶ ぷろんぷと','negatibu puronputo','用于说明不希望画面出现的内容。'),
+D('ai','word','参考图','reference image','/ˈrefrəns ˈɪmɪdʒ/','参照画像','さんしょう がぞう','sanshō gazō','reference 作定语时重音不变。'),
+D('ai','word','宽高比','aspect ratio','/ˈæspekt ˈreɪʃioʊ/','アスペクト比','あすぺくと ひ','asupekuto hi','例如 1:1、16:9、3:4。'),
+D('ai','word','随机种子','random seed','/ˈrændəm siːd/','ランダムシード','らんだむ しーど','randamu shīdo','相同 seed 有助于复现相似结果。'),
+D('ai','word','图生图','image-to-image','/ˈɪmɪdʒ tə ˈɪmɪdʒ/','画像から画像生成','がぞう から がぞう せいせい','gazō kara gazō seisei','用已有图片引导新图片生成。'),
+D('ai','sentence','请严格保留产品的外观和结构。','Keep the product appearance and structure exactly as shown.','/kiːp ðə ˈprɑːdʌkt əˈpɪrəns ænd ˈstrʌktʃər ɪɡˈzæktli æz ʃoʊn/','製品の外観と構造を正確に維持してください。','せいひん の がいかん と こうぞう を せいかく に いじ して ください','seihin no gaikan to kōzō o seikaku ni iji shite kudasai','exactly as shown = 严格按照图中所示。'),
+D('ai','sentence','生成三种不同的设计方案。','Generate three different design variations.','/ˈdʒenəreɪt θriː ˈdɪfrənt dɪˈzaɪn ˌveriˈeɪʃənz/','異なるデザイン案を三つ生成してください。','ことなる でざいんあん を みっつ せいせい して ください','kotonaru dezain-an o mittsu seisei shite kudasai','variation 在这里指不同版本。'),
+D('ai','sentence','去掉文字，但不要改变画面布局。','Remove the text without changing the layout.','/rɪˈmuːv ðə tekst wɪˈðaʊt ˈtʃeɪndʒɪŋ ðə ˈleɪaʊt/','レイアウトを変えずに文字を削除してください。','れいあうと を かえず に もじ を さくじょ して ください','reiauto o kaezu ni moji o sakujo shite kudasai','without doing = 在不做某事的情况下。'),
+D('ai','sentence','让产品看起来真实自然，不要有明显的AI感。','Make the product look realistic and natural, without an obvious AI-generated look.','/meɪk ðə ˈprɑːdʌkt lʊk ˌriːəˈlɪstɪk ænd ˈnætʃrəl/','製品をリアルで自然に見せ、AI生成らしさを抑えてください。','せいひん を りある で しぜん に みせ えーあい せいせい らしさ を おさえて ください','seihin o riaru de shizen ni mise, ēai seisei rashisa o osaete kudasai','AI-generated look = 明显的AI生成感。'),
+
+D('photo','word','光圈','aperture','/ˈæpərtʃər/','絞り','しぼり','shibori','f/2.8 等数值；数值越小光圈越大。'),
+D('photo','word','快门速度','shutter speed','/ˈʃʌtər spiːd/','シャッタースピード','しゃったー すぴーど','shattā supīdo','影响曝光时间与运动模糊。'),
+D('photo','word','感光度','ISO sensitivity','/ˌaɪ es ˈoʊ ˌsensəˈtɪvəti/','ISO感度','あいえすおー かんど','ai esu ō kando','ISO 越高画面越亮，但噪点可能增加。'),
+D('photo','word','焦距','focal length','/ˈfoʊkəl leŋθ/','焦点距離','しょうてん きょり','shōten kyori','单位通常为毫米 mm。'),
+D('photo','word','白平衡','white balance','/waɪt ˈbæləns/','ホワイトバランス','ほわいと ばらんす','howaito baransu','用于校正画面冷暖色偏。'),
+D('photo','word','景深','depth of field','/depθ əv fiːld/','被写界深度','ひしゃかい しんど','hishakai shindo','浅景深会让背景更虚化。'),
+D('photo','sentence','请把焦点对准机箱前面板。','Please focus on the front panel of the PC case.','/pliːz ˈfoʊkəs ɑːn ðə frʌnt ˈpænəl əv ðə piː siː keɪs/','PCケースのフロントパネルにピントを合わせてください。','ぴーしー けーす の ふろんと ぱねる に ぴんと を あわせて ください','pīshī kēsu no furonto paneru ni pinto o awasete kudasai','focus on / ピントを合わせる = 对焦。'),
+D('photo','sentence','画面有些偏黄，请调整白平衡。','The image looks slightly yellow; please adjust the white balance.','/ði ˈɪmɪdʒ lʊks ˈslaɪtli ˈjeloʊ pliːz əˈdʒʌst ðə waɪt ˈbæləns/','画像が少し黄色いので、ホワイトバランスを調整してください。','がぞう が すこし きいろい ので ほわいと ばらんす を ちょうせい して ください','gazō ga sukoshi kiiroi node, howaito baransu o chōsei shite kudasai','slightly = 稍微、有一点。'),
+D('photo','sentence','使用三脚架避免画面抖动。','Use a tripod to prevent camera shake.','/juːz ə ˈtraɪpɑːd tə prɪˈvent ˈkæmərə ʃeɪk/','手ぶれを防ぐために三脚を使ってください。','てぶれ を ふせぐ ため に さんきゃく を つかって ください','tebure o fusegu tame ni sankyaku o tsukatte kudasai','camera shake / 手ぶれ = 相机抖动。'),
+D('photo','sentence','请拍一段产品360度旋转视频。','Please film a 360-degree rotating view of the product.','/pliːz fɪlm ə θriː ˈsɪksti dɪˈɡriː ˈroʊteɪtɪŋ vjuː əv ðə ˈprɑːdʌkt/','製品を360度回転させた動画を撮影してください。','せいひん を さんびゃくろくじゅうど かいてん させた どうが を さつえい して ください','seihin o sanbyaku-rokujū-do kaiten saseta dōga o satsuei shite kudasai','film / 撮影する = 拍摄视频。'),
+
+D('office','word','电子表格','spreadsheet','/ˈspredʃiːt/','スプレッドシート','すぷれっど しーと','supureddo shīto','Excel 和 Google Sheets 都属于 spreadsheet。'),
+D('office','word','工作表','worksheet','/ˈwɜːrkʃiːt/','ワークシート','わーく しーと','wāku shīto','电子表格文件中的单个标签页。'),
+D('office','word','公式','formula','/ˈfɔːrmjələ/','数式','すうしき','sūshiki','复数可用 formulas 或 formulae。'),
+D('office','word','演示文稿','presentation','/ˌprezənˈteɪʃən/','プレゼン資料','ぷれぜん しりょう','purezen shiryō','PowerPoint 文件也可说 slide deck。'),
+D('office','word','附件','attachment','/əˈtætʃmənt/','添付ファイル','てんぷ ふぁいる','tenpu fairu','邮件附件：email attachment。'),
+D('office','word','下拉菜单','drop-down menu','/ˈdrɑːp daʊn ˈmenjuː/','ドロップダウンメニュー','どろっぷ だうん めにゅー','doroppu daun menyū','也写作 dropdown。'),
+D('office','sentence','请把这个文件另存为PDF。','Please save this file as a PDF.','/pliːz seɪv ðɪs faɪl æz ə piː diː ef/','このファイルをPDF形式で保存してください。','この ふぁいる を ぴーでぃーえふ けいしき で ほぞん して ください','kono fairu o pī dī efu keishiki de hozon shite kudasai','save as = 另存为。'),
+D('office','sentence','我已经把文件添加到邮件附件中。','I have attached the file to the email.','/aɪ hæv əˈtætʃt ðə faɪl tə ði ˈiːmeɪl/','メールにファイルを添付しました。','めーる に ふぁいる を てんぷ しました','mēru ni fairu o tenpu shimashita','attach A to B = 把A附加到B。'),
+D('office','sentence','这个公式需要向下填充。','This formula needs to be filled down.','/ðɪs ˈfɔːrmjələ niːdz tə bi fɪld daʊn/','この数式を下までコピーする必要があります。','この すうしき を した まで こぴー する ひつよう が あります','kono sūshiki o shita made kopī suru hitsuyō ga arimasu','fill down 是表格软件中的向下填充。'),
+D('office','sentence','我们把会议安排在周三下午吧。','Let us schedule the meeting for Wednesday afternoon.','/let ʌs ˈskedʒuːl ðə ˈmiːtɪŋ fər ˈwenzdeɪ ˌæftərˈnuːn/','会議を水曜日の午後に設定しましょう。','かいぎ を すいようび の ごご に せってい しましょう','kaigi o suiyōbi no gogo ni settei shimashō','schedule … for + 时间。'),
+
+D('client','word','报价单','quotation / quote','/kwoʊˈteɪʃən/ · /kwoʊt/','見積書','みつもりしょ','mitsumorisho','quote 更口语；quotation 更正式。'),
+D('client','word','需求说明','requirements brief','/rɪˈkwaɪərmənts briːf/','要件書','ようけんしょ','yōkensho','brief 指简明的项目需求说明。'),
+D('client','word','预算','budget','/ˈbʌdʒɪt/','予算','よさん','yosan','within budget = 在预算内。'),
+D('client','word','审批','approval','/əˈpruːvəl/','承認','しょうにん','shōnin','动词 approve / 承認する。'),
+D('client','word','交付文件','deliverables','/dɪˈlɪvərəbəlz/','納品物','のうひんぶつ','nōhinbutsu','项目结束时需要提交的成品。'),
+D('client','sentence','请把完整需求和参考图发给我。','Please send me the full requirements and reference images.','/pliːz send mi ðə fʊl rɪˈkwaɪərmənts ænd ˈrefrəns ˈɪmɪdʒɪz/','詳しい要件と参照画像を送ってください。','くわしい ようけん と さんしょう がぞう を おくって ください','kuwashii yōken to sanshō gazō o okutte kudasai','full requirements = 完整需求。'),
+D('client','sentence','这个报价包含两轮修改。','This quote includes two rounds of revisions.','/ðɪs kwoʊt ɪnˈkluːdz tuː raʊndz əv rɪˈvɪʒənz/','この見積もりには二回の修正が含まれています。','この みつもり には にかい の しゅうせい が ふくまれて います','kono mitsumori niwa nikai no shūsei ga fukumarete imasu','round of revisions = 一轮修改。'),
+D('client','sentence','请确认这个版本是否可以定稿。','Please confirm whether this version can be finalized.','/pliːz kənˈfɜːrm ˈweðər ðɪs ˈvɜːrʒən kæn bi ˈfaɪnəlaɪzd/','このバージョンで確定してよいか確認してください。','この ばーじょん で かくてい して よい か かくにん して ください','kono bājon de kakutei shite yoi ka kakunin shite kudasai','finalize = 定稿、最终确认。'),
+D('client','sentence','如果增加页面，交付时间会顺延。','Adding more pages will extend the delivery timeline.','/ˈædɪŋ mɔːr ˈpeɪdʒɪz wɪl ɪkˈstend ðə dɪˈlɪvəri ˈtaɪmlaɪn/','ページを追加すると、納期が延びます。','ぺーじ を ついか すると のうき が のびます','pēji o tsuika suru to, nōki ga nobimasu','extend the timeline = 延长周期。'),
+D('client','sentence','我理解你的想法，但需要先检查可行性。','I understand your idea, but I need to check the feasibility first.','/aɪ ˌʌndərˈstænd jʊr aɪˈdiːə bət aɪ niːd tə tʃek ðə ˌfiːzəˈbɪləti fɜːrst/','ご意図は理解しましたが、まず実現可能性を確認します。','ごいと は りかい しました が まず じつげん かのうせい を かくにん します','goito wa rikai shimashita ga, mazu jitsugen kanōsei o kakunin shimasu','feasibility = 可行性。'),
+
+D('logistics','word','发货','shipment / dispatch','/ˈʃɪpmənt/ · /dɪˈspætʃ/','発送','はっそう','hassō','ship / 発送する 是动词“发货”。'),
+D('logistics','word','物流单号','tracking number','/ˈtrækɪŋ ˈnʌmbər/','追跡番号','ついせき ばんごう','tsuiseki bangō','用于查询包裹运输状态。'),
+D('logistics','word','配送日期','delivery date','/dɪˈlɪvəri deɪt/','配達日','はいたつび','haitatsubi','estimated delivery date = 预计送达日期。'),
+D('logistics','word','仓库','warehouse','/ˈwerhaʊs/','倉庫','そうこ','sōko','warehouse inventory = 仓库库存。'),
+D('logistics','word','包裹','package / parcel','/ˈpækɪdʒ/ · /ˈpɑːrsəl/','荷物','にもつ','nimotsu','美国常用 package，英国常用 parcel。'),
+D('logistics','word','破损','damage','/ˈdæmɪdʒ/','破損','はそん','hason','damaged item = 破损商品。'),
+D('logistics','sentence','订单已经发货，稍后会更新物流单号。','The order has shipped, and the tracking number will be updated shortly.','/ði ˈɔːrdər hæz ʃɪpt ænd ðə ˈtrækɪŋ ˈnʌmbər wɪl bi ʌpˈdeɪtɪd ˈʃɔːrtli/','注文は発送済みで、追跡番号は後ほど更新されます。','ちゅうもん は はっそうずみ で ついせき ばんごう は のちほど こうしん されます','chūmon wa hassō-zumi de, tsuiseki bangō wa nochihodo kōshin saremasu','has shipped = 已经发货。'),
+D('logistics','sentence','收到包裹时外箱已经破损。','The outer box was already damaged when the package arrived.','/ði ˈaʊtər bɑːks wəz ɔːlˈredi ˈdæmɪdʒd wen ðə ˈpækɪdʒ əˈraɪvd/','荷物が届いた時、外箱はすでに破損していました。','にもつ が とどいた とき そとばこ は すでに はそん して いました','nimotsu ga todoita toki, sotobako wa sudeni hason shite imashita','outer box = 外箱。'),
+D('logistics','sentence','请确认仓库中还有多少库存。','Please confirm how many units are still in the warehouse.','/pliːz kənˈfɜːrm haʊ ˈmeni ˈjuːnɪts ɑːr stɪl ɪn ðə ˈwerhaʊs/','倉庫に在庫がいくつ残っているか確認してください。','そうこ に ざいこ が いくつ のこって いる か かくにん して ください','sōko ni zaiko ga ikutsu nokotte iru ka kakunin shite kudasai','units = 件/台，适合计数商品。'),
+D('logistics','sentence','预计送达时间是三个工作日。','The estimated delivery time is three business days.','/ði ˈestəmeɪtɪd dɪˈlɪvəri taɪm ɪz θriː ˈbɪznəs deɪz/','お届け予定は三営業日です。','おとどけ よてい は さん えいぎょうび です','otodoke yotei wa san eigyōbi desu','business day = 工作日。'),
+
+D('digital','word','充电器','charger','/ˈtʃɑːrdʒər/','充電器','じゅうでんき','jūdenki','phone charger = 手机充电器。'),
+D('digital','word','充电宝','power bank','/ˈpaʊər bæŋk/','モバイルバッテリー','もばいる ばってりー','mobairu batterī','日语不用直译 power bank。'),
+D('digital','word','电池续航','battery life','/ˈbætəri laɪf/','バッテリー持続時間','ばってりー じぞく じかん','batterī jizoku jikan','指一次充电可使用多久。'),
+D('digital','word','屏幕保护膜','screen protector','/skriːn prəˈtektər/','画面保護フィルム','がめん ほご ふぃるむ','gamen hogo firumu','tempered glass protector = 钢化膜。'),
+D('digital','word','降噪耳机','noise-canceling headphones','/ˈnɔɪz kænsəlɪŋ ˈhedfoʊnz/','ノイズキャンセリングヘッドホン','のいず きゃんせりんぐ へっどほん','noizu kyanseringu heddohon','canceling 美式常一个 l。'),
+D('digital','word','无线连接','wireless connection','/ˈwaɪərləs kəˈnekʃən/','ワイヤレス接続','わいやれす せつぞく','waiyaresu setsuzoku','Bluetooth 和 Wi‑Fi 都属于无线连接。'),
+D('digital','sentence','这个充电器支持快速充电吗？','Does this charger support fast charging?','/dʌz ðɪs ˈtʃɑːrdʒər səˈpɔːrt fæst ˈtʃɑːrdʒɪŋ/','この充電器は急速充電に対応していますか？','この じゅうでんき は きゅうそく じゅうでん に たいおう して います か','kono jūdenki wa kyūsoku jūden ni taiō shite imasu ka','support / 対応する = 支持某功能。'),
+D('digital','sentence','蓝牙连接总是自动断开。','The Bluetooth connection keeps dropping.','/ðə ˈbluːtuːθ kəˈnekʃən kiːps ˈdrɑːpɪŋ/','Bluetooth接続が何度も切れます。','ぶるーとぅーす せつぞく が なんど も きれます','burūtūsu setsuzoku ga nando mo kiremasu','keep doing = 反复发生某事。'),
+D('digital','sentence','充满电大约需要多长时间？','How long does it take to fully charge?','/haʊ lɔːŋ dʌz ɪt teɪk tə ˈfʊli tʃɑːrdʒ/','フル充電にはどのくらいかかりますか？','ふる じゅうでん には どの くらい かかります か','furu jūden niwa dono kurai kakarimasu ka','How long does it take…? = 需要多久？'),
+D('digital','sentence','请先检查设备是否连接到同一个Wi‑Fi。','First, check whether the devices are connected to the same Wi‑Fi network.','/fɜːrst tʃek ˈweðər ðə dɪˈvaɪsɪz ɑːr kəˈnektɪd tə ðə seɪm ˈwaɪ faɪ ˈnetwɜːrk/','まず、機器が同じWi‑Fiに接続されているか確認してください。','まず きき が おなじ わいふぁい に せつぞく されて いる か かくにん して ください','mazu, kiki ga onaji waifai ni setsuzoku sarete iru ka kakunin shite kudasai','be connected to = 已连接到。'),
+
+D('clothes','word','夹克','jacket','/ˈdʒækɪt/','ジャケット','じゃけっと','jaketto','轻薄外套常说 jacket。'),
+D('clothes','word','连衣裙','dress','/dres/','ワンピース','わんぴーす','wanpīsu','日语 ワンピース 指连衣裙。'),
+D('clothes','word','长裤','trousers / pants','/ˈtraʊzərz/ · /pænts/','ズボン','ずぼん','zubon','美国常用 pants，英国常用 trousers。'),
+D('clothes','word','运动鞋','sneakers','/ˈsniːkərz/','スニーカー','すにーかー','sunīkā','通常使用复数。'),
+D('clothes','word','尺码','size','/saɪz/','サイズ','さいず','saizu','true to size = 尺码标准。'),
+D('clothes','word','试衣间','fitting room','/ˈfɪtɪŋ ruːm/','試着室','しちゃくしつ','shichakushitsu','也可说 changing room。'),
+D('clothes','sentence','这件衣服有小一码的吗？','Do you have this in a smaller size?','/duː ju hæv ðɪs ɪn ə ˈsmɔːlər saɪz/','これより小さいサイズはありますか？','これ より ちいさい さいず は あります か','kore yori chiisai saizu wa arimasu ka','in a smaller size = 小一码的款式。'),
+D('clothes','sentence','我可以试穿这件吗？','Can I try this on?','/kæn aɪ traɪ ðɪs ɑːn/','これを試着してもいいですか？','これ を しちゃく しても いい です か','kore o shichaku shite mo ii desu ka','try on = 试穿。'),
+D('clothes','sentence','这个面料容易缩水吗？','Does this fabric shrink easily?','/dʌz ðɪs ˈfæbrɪk ʃrɪŋk ˈiːzəli/','この生地は縮みやすいですか？','この きじ は ちぢみやすい です か','kono kiji wa chijimiyasui desu ka','fabric = 面料；shrink = 缩水。'),
+D('clothes','sentence','这件外套可以机洗吗？','Is this coat machine washable?','/ɪz ðɪs koʊt məˈʃiːn ˈwɑːʃəbəl/','このコートは洗濯機で洗えますか？','この こーと は せんたくき で あらえます か','kono kōto wa sentakuki de araemasu ka','machine washable = 可机洗。'),
+
+D('health','word','头痛','headache','/ˈhedeɪk/','頭痛','ずつう','zutsū','have a headache = 头痛。'),
+D('health','word','发烧','fever','/ˈfiːvər/','発熱','はつねつ','hatsunetsu','have a fever = 发烧。'),
+D('health','word','过敏','allergy','/ˈælərdʒi/','アレルギー','あれるぎー','arerugī','be allergic to… = 对……过敏。'),
+D('health','word','处方','prescription','/prɪˈskrɪpʃən/','処方箋','しょほうせん','shohōsen','处方药：prescription medicine。'),
+D('health','word','药店','pharmacy','/ˈfɑːrməsi/','薬局','やっきょく','yakkyoku','美国也常见 drugstore。'),
+D('health','word','症状','symptom','/ˈsɪmptəm/','症状','しょうじょう','shōjō','复数 symptoms；p 不发音。'),
+D('health','sentence','我从昨天开始一直发烧。','I have had a fever since yesterday.','/aɪ hæv hæd ə ˈfiːvər sɪns ˈjestərdeɪ/','昨日からずっと熱があります。','きのう から ずっと ねつ が あります','kinō kara zutto netsu ga arimasu','since + 时间点，常用现在完成时。'),
+D('health','sentence','我对青霉素过敏。','I am allergic to penicillin.','/aɪ æm əˈlɜːrdʒɪk tə ˌpenɪˈsɪlɪn/','ペニシリンにアレルギーがあります。','ぺにしりん に あれるぎー が あります','penishirin ni arerugī ga arimasu','allergic to = 对……过敏。'),
+D('health','sentence','这种药一天需要吃几次？','How many times a day should I take this medicine?','/haʊ ˈmeni taɪmz ə deɪ ʃʊd aɪ teɪk ðɪs ˈmedɪsən/','この薬は一日に何回飲めばいいですか？','この くすり は いちにち に なんかい のめば いい です か','kono kusuri wa ichinichi ni nankai nomeba ii desu ka','take medicine / 薬を飲む = 服药。'),
+D('health','sentence','症状没有改善，反而更严重了。','The symptoms have not improved and are getting worse.','/ðə ˈsɪmptəmz hæv nɑːt ɪmˈpruːvd ænd ɑːr ˈɡetɪŋ wɜːrs/','症状が改善せず、むしろ悪化しています。','しょうじょう が かいぜん せず むしろ あっか して います','shōjō ga kaizen sezu, mushiro akka shite imasu','get worse = 变严重。'),
+
+D('hotel','word','办理入住','check-in','/ˈtʃek ɪn/','チェックイン','ちぇっく いん','chekku in','动词写 check in，名词写 check-in。'),
+D('hotel','word','退房','check-out','/ˈtʃek aʊt/','チェックアウト','ちぇっく あうと','chekku auto','late check-out = 延迟退房。'),
+D('hotel','word','前台','front desk','/frʌnt desk/','フロント','ふろんと','furonto','酒店前台不常说 reception desk（美式场景）。'),
+D('hotel','word','房卡','room key card','/ruːm kiː kɑːrd/','ルームキー','るーむ きー','rūmu kī','很多酒店直接说 room key。'),
+D('hotel','word','含早餐','breakfast included','/ˈbrekfəst ɪnˈkluːdɪd/','朝食付き','ちょうしょく つき','chōshoku tsuki','included = 已包含在价格中。'),
+D('hotel','word','双床房','twin room','/twɪn ruːm/','ツインルーム','ついん るーむ','tsuin rūmu','两张单人床；double room 常是一张双人床。'),
+D('hotel','sentence','我用这个名字预订了房间。','I have a reservation under this name.','/aɪ hæv ə ˌrezərˈveɪʃən ˈʌndər ðɪs neɪm/','この名前で予約しています。','この なまえ で よやく して います','kono namae de yoyaku shite imasu','under this name 是入住时常用表达。'),
+D('hotel','sentence','可以先寄存行李吗？','Could you store my luggage before check-in?','/kʊd ju stɔːr maɪ ˈlʌɡɪdʒ bɪˈfɔːr ˈtʃek ɪn/','チェックイン前に荷物を預かってもらえますか？','ちぇっくいん まえ に にもつ を あずかって もらえます か','chekku-in mae ni nimotsu o azukatte moraemasu ka','store luggage / 荷物を預かる = 寄存行李。'),
+D('hotel','sentence','房间里的空调无法正常工作。','The air conditioner in my room is not working properly.','/ði er kənˈdɪʃənər ɪn maɪ ruːm ɪz nɑːt ˈwɜːrkɪŋ ˈprɑːpərli/','部屋のエアコンが正常に動きません。','へや の えあこん が せいじょう に うごきません','heya no eakon ga seijō ni ugokimasen','not working properly = 无法正常工作。'),
+D('hotel','sentence','退房后还能继续寄存行李吗？','Can I leave my luggage here after check-out?','/kæn aɪ liːv maɪ ˈlʌɡɪdʒ hɪr ˈæftər ˈtʃek aʊt/','チェックアウト後も荷物を預けられますか？','ちぇっくあうと ご も にもつ を あずけられます か','chekku-auto go mo nimotsu o azukeraremasu ka','leave luggage here = 把行李留在这里寄存。'),
+
+D('social','word','好久不见','long time no see','/lɔːŋ taɪm noʊ siː/','お久しぶりです','おひさしぶり です','ohisashiburi desu','熟人久别重逢时使用。'),
+D('social','word','没关系','no problem','/noʊ ˈprɑːbləm/','大丈夫です','だいじょうぶ です','daijōbu desu','也可表示“我没事/可以”。'),
+D('social','word','当然','of course','/əv kɔːrs/','もちろん','もちろん','mochiron','语气取决于场景，避免过重。'),
+D('social','word','可能','probably / maybe','/ˈprɑːbəbli/ · /ˈmeɪbi/','たぶん','たぶん','tabun','probably 的把握通常高于 maybe。'),
+D('social','word','保持联系','keep in touch','/kiːp ɪn tʌtʃ/','連絡を取り合う','れんらく を とりあう','renraku o toriau','常用于告别。'),
+D('social','word','打扰一下','excuse me','/ɪkˈskjuːz mi/','すみません','すみません','sumimasen','用于搭话、道歉或请人让路。'),
+D('social','sentence','很高兴认识你。','It is nice to meet you.','/ɪt ɪz naɪs tə miːt ju/','お会いできてうれしいです。','おあい できて うれしい です','oai dekite ureshii desu','初次见面使用；再次见面不用 meet。'),
+D('social','sentence','谢谢你特意告诉我。','Thank you for letting me know.','/θæŋk ju fər ˈletɪŋ mi noʊ/','わざわざ教えてくれてありがとうございます。','わざわざ おしえて くれて ありがとう ございます','wazawaza oshiete kurete arigatō gozaimasu','Thank you for doing = 感谢你做某事。'),
+D('social','sentence','不好意思，我没听清楚。','Sorry, I did not catch that.','/ˈsɑːri aɪ dɪd nɑːt kætʃ ðæt/','すみません、よく聞き取れませんでした。','すみません よく ききとれません でした','sumimasen, yoku kikitoremasen deshita','did not catch that = 没听清。'),
+D('social','sentence','下次有时间一起吃饭吧。','Let us have dinner together when you are free.','/let ʌs hæv ˈdɪnər təˈɡeðər wen ju ɑːr friː/','今度、時間がある時に一緒にご飯を食べましょう。','こんど じかん が ある とき に いっしょ に ごはん を たべましょう','kondo jikan ga aru toki ni issho ni gohan o tabemashō','when you are free = 你有空时。'),
+
+D('weather','word','晴天','sunny','/ˈsʌni/','晴れ','はれ','hare','It is sunny today.'),
+D('weather','word','阴天','cloudy','/ˈklaʊdi/','曇り','くもり','kumori','cloud 是云；cloudy 是多云的。'),
+D('weather','word','潮湿','humid','/ˈhjuːmɪd/','蒸し暑い','むしあつい','mushiatsui','humid 指湿度高；muggy 指又闷又湿。'),
+D('weather','word','气温','temperature','/ˈtemprətʃər/','気温','きおん','kion','体温也可说 temperature，要看语境。'),
+D('weather','word','天气预报','weather forecast','/ˈweðər ˈfɔːrkæst/','天気予報','てんき よほう','tenki yohō','forecast 既可作名词也可作动词。'),
+D('weather','word','降雨概率','chance of rain','/tʃæns əv reɪn/','降水確率','こうすい かくりつ','kōsui kakuritsu','天气应用常见表达。'),
+D('weather','sentence','今天比昨天凉快多了。','It is much cooler today than yesterday.','/ɪt ɪz mʌtʃ ˈkuːlər təˈdeɪ ðæn ˈjestərdeɪ/','今日は昨日よりずっと涼しいです。','きょう は きのう より ずっと すずしい です','kyō wa kinō yori zutto suzushii desu','much + 比较级 = ……得多。'),
+D('weather','sentence','下午可能会下雨，记得带伞。','It may rain this afternoon, so remember to bring an umbrella.','/ɪt meɪ reɪn ðɪs ˌæftərˈnuːn soʊ rɪˈmembər tə brɪŋ ən ʌmˈbrelə/','午後は雨が降るかもしれないので、傘を忘れないでください。','ごご は あめ が ふる かも しれない ので かさ を わすれないで ください','gogo wa ame ga furu kamo shirenai node, kasa o wasurenaide kudasai','may / かもしれない = 可能。'),
+D('weather','sentence','明天的最高气温是多少？','What will the high temperature be tomorrow?','/wʌt wɪl ðə haɪ ˈtemprətʃər bi təˈmɑːroʊ/','明日の最高気温は何度ですか？','あした の さいこう きおん は なんど です か','ashita no saikō kion wa nando desu ka','high temperature = 最高气温。'),
+D('weather','sentence','最近早晚温差很大。','There is a big temperature difference between morning and evening lately.','/ðer ɪz ə bɪɡ ˈtemprətʃər ˈdɪfrəns bɪˈtwiːn ˈmɔːrnɪŋ ænd ˈiːvnɪŋ ˈleɪtli/','最近は朝晩の気温差が大きいです。','さいきん は あさばん の きおんさ が おおきい です','saikin wa asaban no kionsa ga ōkii desu','temperature difference = 温差。'),
+
+D('pet','word','猫粮','cat food','/kæt fuːd/','キャットフード','きゃっと ふーど','kyatto fūdo','wet food = 湿粮；dry food = 干粮。'),
+D('pet','word','猫砂盆','litter box','/ˈlɪtər bɑːks/','猫用トイレ','ねこよう といれ','nekoyō toire','litter 指猫砂。'),
+D('pet','word','兽医','veterinarian / vet','/ˌvetərəˈneriən/ · /vet/','獣医','じゅうい','jūi','vet 是最常用口语简称。'),
+D('pet','word','疫苗','vaccine','/vækˈsiːn/','ワクチン','わくちん','wakuchin','vaccination = 接种疫苗。'),
+D('pet','word','梳毛','brush the fur','/brʌʃ ðə fɜːr/','毛をとかす','け を とかす','ke o tokasu','fur = 动物皮毛。'),
+D('pet','word','抓挠','scratch','/skrætʃ/','引っかく','ひっかく','hikkaku','scratching post = 猫抓柱。'),
+D('pet','sentence','我的猫最近食欲不太好。','My cat has not had much of an appetite lately.','/maɪ kæt hæz nɑːt hæd mʌtʃ əv ən ˈæpətaɪt ˈleɪtli/','最近、猫の食欲があまりありません。','さいきん ねこ の しょくよく が あまり ありません','saikin, neko no shokuyoku ga amari arimasen','appetite = 食欲。'),
+D('pet','sentence','这只猫一天应该喂几次？','How many times a day should I feed this cat?','/haʊ ˈmeni taɪmz ə deɪ ʃʊd aɪ fiːd ðɪs kæt/','この猫には一日何回ご飯をあげればいいですか？','この ねこ には いちにち なんかい ごはん を あげれば いい です か','kono neko niwa ichinichi nankai gohan o agereba ii desu ka','feed = 给动物喂食。'),
+D('pet','sentence','它一直在舔同一个地方。','It keeps licking the same spot.','/ɪt kiːps ˈlɪkɪŋ ðə seɪm spɑːt/','同じ場所をずっと舐めています。','おなじ ばしょ を ずっと なめて います','onaji basho o zutto namete imasu','keep doing = 一直重复某动作。'),
+D('pet','sentence','需要预约兽医做检查吗？','Do I need to make an appointment with a vet for an examination?','/duː aɪ niːd tə meɪk ən əˈpɔɪntmənt wɪð ə vet fər ən ɪɡˌzæməˈneɪʃən/','獣医の診察を予約する必要がありますか？','じゅうい の しんさつ を よやく する ひつよう が あります か','jūi no shinsatsu o yoyaku suru hitsuyō ga arimasu ka','appointment 用于医生、兽医等预约。')
+];
+let activeCat='all',activeType='all';const KD='lingua-desk-done-v2',KF='lingua-desk-fav-v2';
+const el=id=>document.getElementById(id),set=k=>new Set(JSON.parse(localStorage.getItem(k)||'[]')),save=(k,s)=>localStorage.setItem(k,JSON.stringify([...s])),ci=id=>CATS.find(x=>x.id===id);
+function speak(t,l){const u=new SpeechSynthesisUtterance(t);u.lang=l;u.rate=l==='ja-JP'?.78:.82;speechSynthesis.cancel();speechSynthesis.speak(u)}
+function nav(){const h=CATS.map(c=>`<button class="cat ${c.id===activeCat?'active':''}" data-cat="${c.id}"><span class="ico">${c.icon}</span><span>${c.name}</span><em>${c.id==='all'?DATA.length:DATA.filter(x=>x.cat===c.id).length}</em></button>`).join('');el('sideCats').innerHTML=h;el('mobileCats').innerHTML=h;document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{activeCat=b.dataset.cat;nav();render()})}
+function filtered(){const q=el('search').value.trim().toLowerCase(),st=el('statusFilter').value,d=set(KD),f=set(KF);return DATA.map((x,i)=>({x,i})).filter(({x,i})=>(activeCat==='all'||x.cat===activeCat)&&(activeType==='all'||x.type===activeType)&&(!q||Object.values(x).join(' ').toLowerCase().includes(q))&&(st==='all'||st==='done'&&d.has(i)||st==='new'&&!d.has(i)||st==='fav'&&f.has(i)))}
+function card(x,i){const c=ci(x.cat),d=set(KD).has(i),f=set(KF).has(i);return `<article class="card ${d?'mastered':''}" style="--tone:${c.tone}"><div class="bar"></div><div class="cardmain"><div class="meta"><span>${c.icon} ${c.name}</span><span class="badge ${x.type}">${x.type==='word'?'单词':'句子'}</span>${d?'<span class="master">✓ 已掌握</span>':''}</div><div class="zh">${x.zh}</div><div class="language"><span class="tag">EN</span><div><div class="phrase">${x.en}</div><div class="reading">${x.enp}</div></div></div><div class="language"><span class="tag jp">JP</span><div><div class="phrase">${x.ja}</div><div class="reading">假名：${x.kana}<br>罗马音：${x.romaji}</div></div></div><div class="note">用法：${x.note}</div></div><div class="actions"><button class="action" onclick='speak(${JSON.stringify(x.en)},"en-US")'>▶ 英语发音</button><button class="action" onclick='speak(${JSON.stringify(x.ja)},"ja-JP")'>▶ 日语发音</button><button class="action ${f?'saved':''}" onclick="toggle(${i},'fav')">${f?'★ 已收藏':'☆ 收藏'}</button><button class="action ${d?'done':''}" onclick="toggle(${i},'done')">${d?'✓ 已掌握':'标记掌握'}</button></div></article>`}
+function render(){const a=filtered(),d=set(KD);el('cards').innerHTML=a.length?a.map(({x,i})=>card(x,i)).join(''):'<div class="empty">没有找到对应内容，换个关键词或筛选条件试试。</div>';el('sectionTitle').textContent=ci(activeCat).name;el('resultText').textContent=`显示 ${a.length} 条`;el('totalN').textContent=DATA.length;el('wordN').textContent=DATA.filter(x=>x.type==='word').length;el('sentenceN').textContent=DATA.filter(x=>x.type==='sentence').length;el('doneN').textContent=d.size;el('progressBar').style.width=Math.min(100,d.size/DATA.length*100)+'%'}
+function toggle(i,t){const k=t==='done'?KD:KF,s=set(k);s.has(i)?s.delete(i):s.add(i);save(k,s);render()}
+function randomCard(){const p=filtered(),o=p.length?p[Math.floor(Math.random()*p.length)]:{x:DATA[0]};el('flashCat').textContent=ci(o.x.cat).name+' · '+(o.x.type==='word'?'单词':'句子');el('flashZh').textContent=o.x.zh;el('flashAnswer').innerHTML=`<b>EN</b>　${o.x.en}<br><span style="color:#718099">${o.x.enp}</span><br><br><b>JP</b>　${o.x.ja}<br><span style="color:#718099">${o.x.kana} · ${o.x.romaji}</span>`;el('flashAnswer').hidden=true;el('reveal').textContent='显示答案'}
+el('search').oninput=render;el('statusFilter').onchange=render;document.querySelectorAll('#typeSeg button').forEach(b=>b.onclick=()=>{activeType=b.dataset.type;document.querySelectorAll('#typeSeg button').forEach(x=>x.classList.toggle('active',x===b));render();randomCard()});el('nextCard').onclick=randomCard;el('reveal').onclick=()=>{el('flashAnswer').hidden=!el('flashAnswer').hidden;el('reveal').textContent=el('flashAnswer').hidden?'显示答案':'隐藏答案'};const d=new Date(),days=['周日','周一','周二','周三','周四','周五','周六'];el('dateText').textContent=`${d.getMonth()+1}月${d.getDate()}日 · ${days[d.getDay()]}`;nav();render();randomCard();
+</script></body></html>
